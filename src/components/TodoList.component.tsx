@@ -69,7 +69,7 @@ export default function TodoList({ id, todos, heading }: TodoListI) {
             <div className="absolute top-10 right-0 rounded-lg z-50 p-2 border-2 border-pink-500 dark:border-black w-[12rem] bg-white ">
               <div className="flex gap-2">
                 <input
-                  className="accent-pink-500 dark:accent-black"
+                  className="accent-pink-500 dark:accent-slate-400 "
                   type="checkbox"
                   checked={filter.created}
                   onChange={() =>
@@ -79,11 +79,11 @@ export default function TodoList({ id, todos, heading }: TodoListI) {
                     }))
                   }
                 />
-                <p>Created</p>
+                <p className="dark:text-black">Created</p>
               </div>
               <div className="flex gap-2">
                 <input
-                  className="accent-pink-500"
+                  className="accent-pink-500 dark:accent-slate-400"
                   type="checkbox"
                   checked={filter.done}
                   onChange={() =>
@@ -93,7 +93,7 @@ export default function TodoList({ id, todos, heading }: TodoListI) {
                     }))
                   }
                 />
-                <p>Done</p>
+                <p className="dark:text-black">Done</p>
               </div>
 
               <div className="flex gap-3 mt-4">
