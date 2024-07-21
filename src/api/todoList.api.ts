@@ -1,12 +1,11 @@
+"use server"
 import { TodoListT } from "@/types/todoList.type"
 import { revalidatePath } from "next/cache"
 import { BASE_API_URL } from "./baseApiUrl"
 
 export const getTodoLists = async () => {
   try {
-    const response = await fetch(`${BASE_API_URL}/todolist`, {
-      cache: "no-cache",
-    })
+    const response = await fetch(`${BASE_API_URL}/todolist`)
     return response.json()
   } catch (error) {
     console.log(error)

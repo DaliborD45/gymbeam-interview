@@ -1,3 +1,4 @@
+"use server"
 import { TodoT } from "@/types/todo.type"
 import { TodoListT } from "@/types/todoList.type"
 import { revalidatePath } from "next/cache"
@@ -45,6 +46,7 @@ export const updateTodo = async (todolistId: TodoListT["id"], todo: TodoT) => {
     )
 
     revalidatePath("/")
+    revalidatePath(`/todolist/${todolistId}/todo/${todo.id}`)
     return response.json()
   } catch (error) {
     console.log(error)
