@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="relative">
       <body className={inter.className}>
         <ThemeProvider attribute="class">
           <main className="min-h-screen  bg-gradient-to-r gradient">

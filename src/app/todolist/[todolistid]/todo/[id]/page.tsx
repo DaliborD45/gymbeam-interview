@@ -9,7 +9,7 @@ export default async function TodoPage({
 }) {
   const data = await getTodo(params.todolistid,params.id)
   return (
-    <div className="p-5">
+    <div className="p-3">
       <TodoLarge data={data} />
     </div>
   )

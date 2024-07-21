@@ -21,7 +21,7 @@ export default function CreateTodoListForm() {
   }
   return (
     <>
-      <div className="flex flex-col md:max-w-4xl mx-auto w-full bg-slate-100 dark:bg-slate-400 rounded-lg p-5">
+      <div className="flex flex-col md:max-w-4xl mx-auto w-full bg-slate-100 dark:bg-slate-400 rounded-lg p-3 sm:p-5">
         <h1 className="font-semibold text-xl mb-5 dark:text-black">
           Create Todo List
         </h1>

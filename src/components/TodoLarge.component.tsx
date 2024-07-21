@@ -99,7 +99,7 @@ export default function TodoLarge({ data }: TodoLargeI) {
     >
       {({ errors, touched }) => (
         <Form>
-          <div className="flex flex-col md:max-w-4xl mx-auto w-full bg-slate-100 dark:bg-slate-400 rounded-lg p-5">
+          <div className="flex flex-col md:max-w-4xl mx-auto w-full bg-slate-100 dark:bg-slate-400 rounded-lg p-3 sm:p-5">
             {isUpdating ? (
               <div className="w-[30rem] mb-4">
                 <Field
