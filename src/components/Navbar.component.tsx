@@ -35,7 +35,6 @@ export default function Navbar() {
         >
           Create Todo List
         </Button>
-        <ThemeModeSwitch />
       </div>
     </nav>
   )
