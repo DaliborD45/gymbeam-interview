@@ -5,7 +5,9 @@ import { BASE_API_URL } from "./baseApiUrl"
 
 export const getTodoLists = async () => {
   try {
-    const response = await fetch(`${BASE_API_URL}/todolist`)
+    const response = await fetch(`${BASE_API_URL}/todolist`,{
+      cache: "no-cache"
+    })
     return response.json()
   } catch (error) {
     console.log(error)
