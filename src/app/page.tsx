@@ -1,8 +1,9 @@
 import { getTodos } from "@/api/todo.api"
 import { getTodoLists } from "@/api/todoList.api"
-import TodoList, { TodoListSkeleton } from "@/components/TodoList.component"
+import TodoList from "@/components/TodoList.component"
+import TodoListSkeleton from "@/components/TodoListSkeleton.component"
 import { TodoListT } from "@/types/todoList.type"
-import { Suspense, useState } from "react"
+import { Suspense } from "react"
 
 interface TodolistScreenI {
   todolistId: string

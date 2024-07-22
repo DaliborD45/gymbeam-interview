@@ -16,7 +16,6 @@ export default function Todo({ data }: TodoI) {
     router.push(`/todolist/${data.todolistId}/todo/${data.id}`)
   }
 
-  // Now you can use the selected design in your component
   return (
     <div
       className=" relative group w-full bg-slate-100 dark:bg-slate-500 border-2 border-slate-300 shadow-sm rounded-lg p-2 hover:border-pink-500 dark:hover:border-black hover:cursor-pointer ease-linear duration-100"

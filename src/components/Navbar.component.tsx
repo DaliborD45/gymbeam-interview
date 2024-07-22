@@ -4,7 +4,6 @@ import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
 import Button from "./Button.component"
 import Image from "next/image"
-import ThemeModeSwitch from "./ThemeModeSwitch.component"
 export default function Navbar() {
   const router = useRouter()
   const { theme } = useTheme()
