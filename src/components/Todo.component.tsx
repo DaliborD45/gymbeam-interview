@@ -16,8 +16,6 @@ export default function Todo({ data }: TodoI) {
     router.push(`/todolist/${data.todolistId}/todo/${data.id}`)
   }
 
-  const selectedDesign = priorityTagDesign[data.priority as keyof typeof priorityTagDesign]
-
   // Now you can use the selected design in your component
   return (
     <div
@@ -33,7 +31,9 @@ export default function Todo({ data }: TodoI) {
         )}
         <div className="flex flex-col items-start gap-1">
           <div
-            className={`${selectedDesign} rounded-xl px-4 py-[3px] text-white  `}
+            className={`rounded-xl px-4 py-[3px] text-white  ${
+              priorityTagDesign[data.priority as keyof typeof priorityTagDesign]
+            }`}
           />
 
           <h3>{data.title}</h3>

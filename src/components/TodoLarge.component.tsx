@@ -86,8 +86,6 @@ export default function TodoLarge({ data }: TodoLargeI) {
     await updateTodo(data.todolistId, values)
     router.push("/")
   }
-  const selectedDesign =
-    priorityTagDesign[data.priority as keyof typeof priorityTagDesign]
 
   return (
     <Formik
@@ -119,7 +117,11 @@ export default function TodoLarge({ data }: TodoLargeI) {
                     {data.title}
                   </h1>
                   <div
-                    className={`${selectedDesign} rounded-xl px-4 py-[3px] text-white  `}
+                    className={`${
+                      priorityTagDesign[
+                        data.priority as keyof typeof priorityTagDesign
+                      ]
+                    } rounded-xl px-4 py-[3px] text-white  `}
                   >
                     <p className="font-semibold text-sm">{data.priority}</p>
                   </div>
