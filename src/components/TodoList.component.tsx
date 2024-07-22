@@ -66,7 +66,7 @@ export default function TodoList({ id, todos, heading }: TodoListI) {
             Filter
           </Button>
           {openFilter && (
-            <div className="absolute top-10 right-0 rounded-lg z-50 p-2 border-2 border-pink-500 dark:border-black w-[12rem] bg-white ">
+            <div className="absolute top-10 right-0 rounded-lg z-50 p-2 border-2 border-pink-500 dark:border-black  bg-white dark:bg-slate-300">
               <div className="flex gap-2">
                 <input
                   className="accent-pink-500 dark:accent-slate-400 "
