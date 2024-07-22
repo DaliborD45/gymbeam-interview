@@ -13,6 +13,7 @@ import * as Yup from "yup"
 import Input from "./Input.component"
 import TextArea from "./Textarea.component"
 import { RiProgress3Line } from "react-icons/ri"
+import { priorityTagDesign } from "@/helpers/priorityTagDesign"
 interface TodoLargeI {
   data: TodoT
 }
@@ -38,7 +39,7 @@ function TodoSetting({ Icon, title, onClick }: TodoSettingI) {
       onClick={onClick}
     >
       <Icon className="text-md text-pink-500 dark:text-black" />
-      <p className="text-sm dark:text-slate-300" >{title}</p>
+      <p className="text-sm dark:text-slate-300">{title}</p>
     </div>
   )
 }
@@ -85,11 +86,12 @@ export default function TodoLarge({ data }: TodoLargeI) {
     await updateTodo(data.todolistId, values)
     router.push("/")
   }
+  const selectedDesign =
+    priorityTagDesign[data.priority as keyof typeof priorityTagDesign]
 
   return (
     <Formik
       initialValues={{
-        //this generating of id is not ideal, but since BE api is not generating it, we have to handle it here
         ...data,
       }}
       validationSchema={validationSchema}
@@ -100,20 +102,30 @@ export default function TodoLarge({ data }: TodoLargeI) {
       {({ errors, touched }) => (
         <Form>
           <div className="flex flex-col md:max-w-4xl mx-auto w-full bg-slate-100 dark:bg-slate-400 rounded-lg p-3 mb-12 sm:p-5">
-            {isUpdating ? (
-              <div className="w-full md:max-w-[30rem] mb-4">
-                <Field
-                  type="text"
-                  name="title"
-                  errors={errors.title}
-                  touched={touched.title}
-                  component={Input}
-                />
-              </div>
-            ) : (
-              <h1 className="text-xl font-semibold dark:text-black">{data.title}</h1>
-            )}
-
+            <div className="flex justify-between items-start">
+              {isUpdating ? (
+                <div className="w-full md:max-w-[30rem] mb-4">
+                  <Field
+                    type="text"
+                    name="title"
+                    errors={errors.title}
+                    touched={touched.title}
+                    component={Input}
+                  />
+                </div>
+              ) : (
+                <>
+                  <h1 className="text-xl font-semibold dark:text-black ">
+                    {data.title}
+                  </h1>
+                  <div
+                    className={`${selectedDesign} rounded-xl px-4 py-[3px] text-white  `}
+                  >
+                    <p className="font-semibold text-sm">{data.priority}</p>
+                  </div>
+                </>
+              )}
+            </div>
             <div className="flex flex-col md:flex-row justify-between gap-5">
               <div className="flex flex-col  break-words gap-2">
                 <p className="text-xs font-light text-slate-500 dark:text-slate-700  mt-1">
@@ -139,17 +151,37 @@ export default function TodoLarge({ data }: TodoLargeI) {
                   <p className="text-md dark:text-black">Description</p>
                 </div>
                 {isUpdating ? (
-                  <div className="w-full  md:w-[30rem]">
-                    <Field
-                      type="text"
-                      name="description"
-                      errors={errors.description}
-                      touched={touched.description}
-                      component={TextArea}
-                    />
-                  </div>
+                  <>
+                    <div className="w-full  md:w-[30rem]">
+                      <Field
+                        type="text"
+                        name="description"
+                        errors={errors.description}
+                        touched={touched.description}
+                        component={TextArea}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-sm text-black">Priority</label>
+                      <Field
+                        as="select"
+                        label="Priority"
+                        type="select"
+                        name="priority"
+                        className="rounded-lg py-1 px-3 dark:text-black focus:outline-pink-300 dark:focus:outline-transparent dark:bg-slate-200  "
+                        errors={errors.priority}
+                        touched={touched.priority}
+                      >
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                      </Field>
+                    </div>
+                  </>
                 ) : (
-                  <p className="text-sm mt-1 pl-6 dark:text-black">{data.description}</p>
+                  <p className="text-sm mt-1 pl-6 dark:text-black">
+                    {data.description}
+                  </p>
                 )}
               </div>
               <div className="md:min-w-[10rem]">

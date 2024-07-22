@@ -19,13 +19,15 @@ const validationSchema = Yup.object({
 export default function CreateTodoForm({ todoListId }: { todoListId: string }) {
   const router = useRouter()
   const handleCreateTodo = async (values: TodoT) => {
-    const res = await addTodo(todoListId,values)
+    const res = await addTodo(todoListId, values)
     console.log(res)
     router.push("/")
   }
   return (
     <div className="flex flex-col md:max-w-4xl mx-auto w-full bg-slate-100 dark:bg-slate-400 rounded-lg p-5">
-      <h1 className="font-semibold text-xl mb-5 dark:text-black">Create Todo</h1>
+      <h1 className="font-semibold text-xl mb-5 dark:text-black">
+        Create Todo
+      </h1>
       <Formik
         initialValues={{
           //this generating of id is not ideal, but since BE api is not generating it, we have to handle it here
@@ -35,10 +37,11 @@ export default function CreateTodoForm({ todoListId }: { todoListId: string }) {
           created_at: new Date().toISOString(),
           deadline_date: "",
           completed: false,
+          priority: "low",
           todolistId: todoListId,
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
+        onSubmit={(values: TodoT) => {
           handleCreateTodo(values)
         }}
       >
@@ -70,6 +73,22 @@ export default function CreateTodoForm({ todoListId }: { todoListId: string }) {
                 touched={touched.deadline_date}
                 component={Input}
               />
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-black">Priority</label>
+                <Field
+                  as="select"
+                  label="Priority"
+                  type="select"
+                  name="priority"
+                  className="rounded-lg py-1 px-3 dark:text-black focus:outline-pink-300 dark:focus:outline-transparent dark:bg-slate-200  "
+                  errors={errors.priority}
+                  touched={touched.priority}
+                >
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </Field>
+              </div>
             </div>
 
             <Button type="button" variant="primary" size="md">

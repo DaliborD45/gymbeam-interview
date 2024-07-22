@@ -6,4 +6,5 @@ export type TodoT = {
   created_at: string
   todolistId: string
   completed: boolean
+  priority: "low" | "medium" | "high"
 }
