@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import Navbar from "@/components/Navbar.component"
 import { ThemeProvider } from "next-themes"
 import Footer from "@/components/Footer.component"
+import Navbar from "@/components/Navbar.component"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -18,13 +18,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="relative">
+    <html lang="en" className="relative">
       <body className={inter.className}>
         <ThemeProvider attribute="class">
           <main className="min-h-screen  bg-gradient-to-r gradient">
             <Navbar />
             {children}
-            <Footer/>
+            <Footer />
           </main>
         </ThemeProvider>
       </body>
