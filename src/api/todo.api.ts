@@ -79,7 +79,9 @@ export const getTodo = async (
 ) => {
   try {
     const response = await fetch(
-      `${BASE_API_URL}/todolist/${todolistId}/todos/${todoId}`
+      `${BASE_API_URL}/todolist/${todolistId}/todos/${todoId}`,{
+        cache: "no-cache"
+      }
     )
     return response.json()
   } catch (error) {
