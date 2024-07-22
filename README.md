@@ -13,6 +13,6 @@ npm run dev
 ```
 
 
-##App is deployed 
+## App is deployed 
 
 [Click here to see the app](https://gymbeam-interview-todo.netlify.app/)
